@@ -13,10 +13,12 @@
       <a class="navbar-brand" href="#">Drug Interaction Test</a>
     </div>
     <div>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="index.html">Check Interactions</a> </li>
-            <li><a href="compare.html">Drug and Interactions</a> </li>
-        </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.html">Check Interactions</a> </li>
+                <li><a href="compare.html">Drug and Interactions</a> </li>
+            </ul>
+
     </div>
   </div>
 </nav>
@@ -38,21 +40,23 @@
                     <div class="from-group">
                     <div>
                         <label for="drugs">Enter Drug RXCUI Number</label>
-                    <input type="text" id="drugs" class="form-control" required>
-
+                    <input list="drugs" class="form-control">
+                        <datalist id="drugs">
+                            <option value="p"></option>
+                            <option value="ps"></option>
+                        </datalist>
                         </div>
-                        <div id="error" style="color: red"></div>
                         <br>
                         <div>
+                            <input type="submit" class="btn btn-primary" name="send" value="ADD" id="add">
+
                             <input type="submit" class="btn btn-primary" name="send" value="CHECK" id="checker">
-                            <br>
-                            <div id="processing"></div>
                         </div>
                     </div>
                     </form>
                     <br>
                   <div>
-                        <h4>Result For RXCUI <span id="drugrx"></span></h4>
+                        <h4>Result</h4>
                         <table class="table">
                             <tr>
                                 <th>Drug Name</th>
