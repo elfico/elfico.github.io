@@ -39,8 +39,8 @@
                     <form action="#" method="get">
                     <div class="from-group">
                     <div>
-                        <label for="drugs">Enter Drug RXCUI Number</label>
-                    <input list="drugs" class="form-control">
+                        <label for="drugs">Enter Drugs</label>
+                    <input list="drugs" class="form-control" id="drugname">
                         <datalist id="drugs">
                             <option value="p"></option>
                             <option value="ps"></option>
@@ -50,7 +50,14 @@
                         <div>
                             <input type="submit" class="btn btn-primary" name="send" value="ADD" id="add">
 
-                            <input type="submit" class="btn btn-primary" name="send" value="CHECK" id="checker">
+                            <input type="submit" class="btn btn-primary" name="send" value="CHECK COMPATIBILITY" id="compare">
+                        </div>
+                        <br>
+                        <div>
+                            <h4>Selected Drugs</h4>
+                            <ol type="1">
+                            <span id="dlist"></span>
+                            </ol>
                         </div>
                     </div>
                     </form>
@@ -59,11 +66,14 @@
                         <h4>Result</h4>
                         <table class="table">
                             <tr>
-                                <th>Drug Name</th>
-                                <th>Interactive Drug</th>
+                                <th>Drug A</th>
+                                <th>Drug B</th>
+                                <th>Compatibility</th>
                                 <th>Interaction</th>
+
                             </tr>
                             <tr id="nl">
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
