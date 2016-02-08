@@ -12,7 +12,8 @@ $(document).ready(function(){
 
     $("#checker").click(function(){
         var xhr = new XMLHttpRequest();
-        var url = "http://localhost/interaction/list.json";
+        //var url = "http://localhost/interaction/list.json";
+        var url = "https://rxnav.nlm.nih.gov/REST/interaction/interaction.json?rxcui=25120";
         xhr.open("GET", url, true);
 
         xhr.onload = function () {
