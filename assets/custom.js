@@ -1,12 +1,9 @@
 $(document).ready(function(){
 
-    var drug1;
-    var drug2;
-    var drug3;
 
    $("#add").click(function(){
         var drugname = document.getElementById("drugname").value;
-        var drug = "<li><input type='hidden' value='" + drugname + "'>" + drugname + "</li>";
+        var drug = "<li><input class='drugs' type='hidden' value='" + drugname + "'>" + drugname + "</li>";
    $("#dlist").before(drug);
    return false;
     });
@@ -71,14 +68,19 @@ $(document).ready(function(){
     $("#compare").click(function(){
         var xhr = new XMLHttpRequest();
         //var url = "http://localhost/interaction/list.json";
-        var rxc = document.getElementsByTagName("input").value;
-        for(var j = 0; j <)
-        if(rxc === "" || isNaN(rxc))
+        var drxc = document.getElementsByClassName("drugs");
+        for(var j = 0; j < drxc.length; j++)
+        {
+            alert("the drugs are" + drxc[j].value)
+        }
+
+        return false;
+        /*if(rxc === "" || isNaN(rxc))
         {
             document.getElementById("error").innerHTML = "Invalid RXCUI Number";
             return false;
-        }
-
+        }*/
+/*
         else
         {
             document.getElementById("error").innerHTML = "";
@@ -112,11 +114,11 @@ $(document).ready(function(){
             };
 
             /*xhr.setRequestHeader("Content-Type", "application/json");*/
-            document.getElementById("processing").innerHTML = "Processing....";
+           /* document.getElementById("processing").innerHTML = "Processing....";
             xhr.send();
             return false;
 
-        }
+        }*/
 
 
 
