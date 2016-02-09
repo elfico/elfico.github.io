@@ -3,6 +3,7 @@ $(document).ready(function(){
 
    $("#add").click(function(){
         var drugname = document.getElementById("drugname").value;
+       var drug = "<li>All</li>";
 
        /*start*/
        if(isNaN(drugname))
@@ -17,39 +18,49 @@ $(document).ready(function(){
                if(data.idGroup.rxnormId && data.idGroup.rxnormId.length >= 0)
                {
                 var drugrxcui = data.idGroup.rxnormId[0];
-                   var drug = "<li><input class='drugs' type='hidden' value='" + drugrxcui + "'>" + drugname + " " + drugrxcui + "</li>";
+                   drug = "<li><input class='drugs' type='hidden' value='" + drugrxcui + "'>" + drugname + " " + drugrxcui + "</li>";
+                   document.getElementById("rxid2").innerHTML = "RXCUI Found and Added";
+                   $("#dlist").before(drug);
+                   return false;
                }
 
                else
                {
-                   document.getElementById("rxid").innerHTML = "Rxcui is not found";
+                   drug = "<li><input class='drugs' type='hidden' value='null'>" + drugname  + " No Rxcui</li>";
+                   document.getElementById("rxid2").innerHTML = "No RXCUI Found";
+                   $("#dlist").before(drug);
+                   return false;
                }
            };
 
            xhr.onerror = function()
            {
-               document.getElementById("rxid").innerHTML = "Error. Try Again";
+               document.getElementById("rxid2").innerHTML = "Error. Try Again";
            };
 
-           document.getElementById("rxid").innerHTML = "Searching for RXCUI...";
+           document.getElementById("rxid2").innerHTML = "Searching for RXCUI...";
            xhr.send();
            return false;
        }
 
-       else if(!isNaN(rxc))
+       else if(!isNaN(drugname))
        {
-           document.getElementById("rxid").innerHTML = rxc;
+
+           document.getElementById("error").innerHTML = "Enter a drugname";
+           return false;
        }
 
-       else if(rxc === null)
+       else if(drugname === null)
        {
            document.getElementById("error").innerHTML = "Invalid RXCUI";
+           return false;
        }
        /*stop*/
 
       /*var drug = "<li><input class='drugs' type='hidden' value='" + drugname + "'>" + drugname + "</li>"; */
-   $("#dlist").before(drug);
-   return false;
+
+        /*$("#dlist").before(drug);
+         return false;*/
     });
 
 
@@ -178,14 +189,14 @@ $(document).ready(function(){
 
 
     $("#compare").click(function(){
-        var xhr = new XMLHttpRequest();
+       // var xhr = new XMLHttpRequest();
         //var url = "http://localhost/interaction/list.json";
         var drxc = document.getElementsByClassName("drugs");
         for(var j = 0; j < drxc.length; j++)
         {
             alert("the drugs are" + drxc[j].value)
         }
-
+        return false;
     });
 
 });
