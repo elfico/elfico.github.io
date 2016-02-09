@@ -3,7 +3,51 @@ $(document).ready(function(){
 
    $("#add").click(function(){
         var drugname = document.getElementById("drugname").value;
-        var drug = "<li><input class='drugs' type='hidden' value='" + drugname + "'>" + drugname + "</li>";
+       /*start*/
+
+       if(isNaN(drugname))
+       {
+           var xhr = new XMLHttpRequest();
+           var url = "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=" + drugname;
+           xhr.open("GET", url, true);
+
+           xhr.onload = function(){
+               var data = JSON.parse(xhr.responseText);
+
+               if(data.idGroup.rxnormId && data.idGroup.rxnormId.length >= 0)
+               {
+                var drugrxcui = data.idGroup.rxnormId[0];
+                   var drug = "<li><input class='drugs' type='hidden' value='" + drugrxcui + "'>" + drugname + " " + drugrxcui + "</li>";
+               }
+
+               else
+               {
+                   document.getElementById("rxid").innerHTML = "Rxcui is not found";
+               }
+           };
+
+           xhr.onerror = function()
+           {
+               document.getElementById("rxid").innerHTML = "Error. Try Again";
+           };
+
+           document.getElementById("rxid").innerHTML = "Searching for RXCUI...";
+           xhr.send();
+           return false;
+       }
+
+       else if(!isNaN(rxc))
+       {
+           document.getElementById("rxid").innerHTML = rxc;
+       }
+
+       else if(rxc === null)
+       {
+           document.getElementById("error").innerHTML = "Invalid RXCUI";
+       }
+
+       /*stop*/
+      /*var drug = "<li><input class='drugs' type='hidden' value='" + drugname + "'>" + drugname + "</li>"; */
    $("#dlist").before(drug);
    return false;
     });
@@ -11,10 +55,11 @@ $(document).ready(function(){
 
 
     $("#drugs").keyup(function(){
+        document.getElementById("error").innerHTML = "";
         var rxc = document.getElementById("drugs").value;
         if(isNaN(rxc))
         {
-            document.getElementById("checker").disabled = true;
+           // document.getElementById("checker").disabled = true;
             var xhr = new XMLHttpRequest();
             var url = "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=" + rxc;
             xhr.open("GET", url, true);
@@ -25,7 +70,7 @@ $(document).ready(function(){
             if(data.idGroup.rxnormId && data.idGroup.rxnormId.length >= 0)
             {
                 document.getElementById("rxid").innerHTML = data.idGroup.rxnormId[0];
-                document.getElementById("checker").disabled = false;
+              //  document.getElementById("checker").disabled = false;
             }
 
               else
@@ -47,13 +92,13 @@ $(document).ready(function(){
         else if(!isNaN(rxc))
         {
             document.getElementById("rxid").innerHTML = rxc;
-            document.getElementById("checker").disabled = false;
+            //document.getElementById("checker").disabled = false;
         }
 
         else if(rxc === null)
         {
             document.getElementById("error").innerHTML = "Invalid RXCUI";
-            document.getElementById("checker").disabled = true;
+           // document.getElementById("checker").disabled = true;
         }
     });
 
@@ -140,52 +185,5 @@ $(document).ready(function(){
         }
 
     });
-
-    function rxcuichecker(rxcui)
-    {
-        if(isNaN(rxcui))
-        {
-            document.getElementById("checker").disabled = true;
-            var xhr = new XMLHttpRequest();
-            var url = "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=" + rxcui;
-            xhr.open("GET", url, true);
-
-            xhr.onload = function(){
-                var data = JSON.parse(xhr.responseText);
-
-                if(data.idGroup.rxnormId && data.idGroup.rxnormId.length >= 0)
-                {
-                    return data.idGroup.rxnormId[0];
-                }
-
-                else
-                {
-                    return "not found";
-                }
-            };
-
-            xhr.onerror = function()
-            {
-                document.getElementById("rxid").innerHTML = "Error. Try Again";
-            };
-
-            document.getElementById("rxid").innerHTML = "Searching for RXCUI...";
-            xhr.send();
-            return false;
-        }
-
-        else if(!isNaN(rxc))
-        {
-            document.getElementById("rxid").innerHTML = rxc;
-            document.getElementById("checker").disabled = false;
-        }
-
-        else if(rxc === null)
-        {
-            document.getElementById("error").innerHTML = "Invalid RXCUI";
-            document.getElementById("checker").disabled = true;
-        }
-
-    }
 
 });
