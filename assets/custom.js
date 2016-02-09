@@ -3,8 +3,8 @@ $(document).ready(function(){
 
    $("#add").click(function(){
         var drugname = document.getElementById("drugname").value;
-       /*start*/
 
+       /*start*/
        if(isNaN(drugname))
        {
            var xhr = new XMLHttpRequest();
@@ -45,8 +45,8 @@ $(document).ready(function(){
        {
            document.getElementById("error").innerHTML = "Invalid RXCUI";
        }
-
        /*stop*/
+
       /*var drug = "<li><input class='drugs' type='hidden' value='" + drugname + "'>" + drugname + "</li>"; */
    $("#dlist").before(drug);
    return false;
@@ -129,7 +129,7 @@ $(document).ready(function(){
 
                 var data = JSON.parse(xhr.responseText);
 
-                if(data.interactionTypeGroup.length >= 0)
+                if(data.interactionTypeGroup && data.interactionTypeGroup.length >= 0)
                 {
 
                 for(var k = 0; k < data.interactionTypeGroup[0].interactionType.length; k++)
@@ -150,7 +150,7 @@ $(document).ready(function(){
 
                 else
                 {
-                    document.getElementById("processing").innerHTML = "Finished Processing. No interaction Found. Check that the RXCUI is correct";
+                    document.getElementById("processing").innerHTML = "No Interaction Found";
                 }
 
                 document.getElementById("processing").innerHTML = "Finished Processing";
