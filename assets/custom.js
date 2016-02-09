@@ -55,6 +55,8 @@ $(document).ready(function(){
 
 
     $("#drugs").keyup(function(){
+
+        document.getElementById("processing").innerHTML = "Finished";
         document.getElementById("error").innerHTML = "";
         var rxc = document.getElementById("drugs").value;
         if(isNaN(rxc))
