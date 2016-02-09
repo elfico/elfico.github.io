@@ -1,19 +1,70 @@
-/*var newdrug = document.createElement("tr")
- var drugName = document.createElement("td");
- var drugInteract = document.createElement("td");*/
-
 $(document).ready(function(){
 
+
     $("#add").click(function(){
-        var drug = "<tr><td>Drugname</td><td>Interaction</td></tr>";
-        $("#nl").after(drug);
+        var drugname = document.getElementById("drugname").value;
+        var drug = "<li><input class='drugs' type='hidden' value='" + drugname + "'>" + drugname + "</li>";
+        $("#dlist").before(drug);
         return false;
     });
+
+
+
+    $("#drugs").keyup(function(){
+        var rxc = document.getElementById("drugs").value;
+        if(isNaN(rxc))
+        {
+            document.getElementById("checker").disabled = true;
+            var xhr = new XMLHttpRequest();
+            var url = "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=" + rxc;
+            xhr.open("GET", url, true);
+
+            xhr.onload = function(){
+                var data = JSON.parse(xhr.responseText);
+
+                if(data.idGroup.rxnormId && data.idGroup.rxnormId.length >= 0)
+                {
+                    document.getElementById("rxid").innerHTML = data.idGroup.rxnormId[0];
+                    document.getElementById("checker").disabled = false;
+                }
+
+                else
+                {
+                    document.getElementById("rxid").innerHTML = "Rxcui is not found";
+                }
+            };
+
+            xhr.onerror = function()
+            {
+                document.getElementById("rxid").innerHTML = "Error. Try Again";
+            };
+
+            document.getElementById("rxid").innerHTML = "Searching for RXCUI...";
+            xhr.send();
+            return false;
+        }
+
+        else if(!isNaN(rxc))
+        {
+            document.getElementById("rxid").innerHTML = rxc;
+            document.getElementById("checker").disabled = false;
+        }
+
+        else if(rxc === null)
+        {
+            document.getElementById("error").innerHTML = "Invalid RXCUI";
+            document.getElementById("checker").disabled = true;
+        }
+    });
+
+
+
 
     $("#checker").click(function(){
         var xhr = new XMLHttpRequest();
         //var url = "http://localhost/interaction/list.json";
-        var rxc = document.getElementById("drugs").value;
+
+        var rxc = document.getElementById("rxid").innerHTML;
         if(rxc === "" || isNaN(rxc))
         {
             document.getElementById("error").innerHTML = "Invalid RXCUI Number";
@@ -22,50 +73,51 @@ $(document).ready(function(){
 
         else
         {
+            $(".pulledData").remove();
+
             document.getElementById("error").innerHTML = "";
             var url = "https://rxnav.nlm.nih.gov/REST/interaction/interaction.json?rxcui=" + rxc;
             xhr.open("GET", url, true);
             xhr.onload = function () {
 
                 var data = JSON.parse(xhr.responseText);
-                //document.getElementById("message").innerHTML = data.nlmDisclaimer;
 
-                //var drug = "<tr><td>" + data.interactionTypeGroup[0].interactionType[0].minConceptItem.name + "</td><td></td><td>good</td></tr>";
-                /* for(var k = 0; k < 2; k++)
-                 {
-                 for(var i = 0; i <= 80; i++)
-                 {
-
-                 var drug = "<tr><td>" + data.interactionTypeGroup[0].interactionType[k].interactionPair[i].interactionConcept[0].minConceptItem.name +
-                 "</td><td>"  + data.interactionTypeGroup[0].interactionType[k].interactionPair[i].interactionConcept[1].minConceptItem.name +
-                 "</td><td>" + data.interactionTypeGroup[0].interactionType[k].interactionPair[i].description + "</td></tr>";
-                 $("#nl").before(drug);
-                 }}*/
-
-                for(var k = 0; k < data.interactionTypeGroup[0].interactionType.length; k++)
+                if(data.interactionTypeGroup.length >= 0)
                 {
 
-                    for(var i = 0; i <  data.interactionTypeGroup[0].interactionType[k].interactionPair.length; i++)
+                    for(var k = 0; k < data.interactionTypeGroup[0].interactionType.length; k++)
                     {
 
-                        var drug = "<tr><td>" + data.interactionTypeGroup[0].interactionType[k].interactionPair[i].interactionConcept[0].minConceptItem.name +
-                            "</td><td>"  + data.interactionTypeGroup[0].interactionType[k].interactionPair[i].interactionConcept[1].minConceptItem.name +
-                            "</td><td>" + data.interactionTypeGroup[0].interactionType[k].interactionPair[i].description + "</td></tr>";
-                        $("#nl").before(drug);
+                        for(var i = 0; i <  data.interactionTypeGroup[0].interactionType[k].interactionPair.length; i++)
+                        {
 
+                            var drug = "<tr class='pulledData'><td>" + data.interactionTypeGroup[0].interactionType[k].interactionPair[i].interactionConcept[0].minConceptItem.name +
+                                "</td><td>"  + data.interactionTypeGroup[0].interactionType[k].interactionPair[i].interactionConcept[1].minConceptItem.name +
+                                "</td><td>" + data.interactionTypeGroup[0].interactionType[k].interactionPair[i].description + "</td></tr>";
+                            $("#nl").before(drug);
+
+                        }
                     }
+
                 }
-                document.getElementById("processing").innerHTML = "Finished";
+
+                else
+                {
+                    document.getElementById("processing").innerHTML = "Finished Processing. No interaction Found. Check that the RXCUI is correct";
+                }
+
+                document.getElementById("processing").innerHTML = "Finished Processing";
+                document.getElementById("drugrx").innerHTML = rxc;
             };
 
 
             xhr.onerror = function() {
-                document.getElementById("message").innerHTML = "failed";
+                document.getElementById("processing").innerHTML = "Error. Please Try Again";
 
             };
 
             /*xhr.setRequestHeader("Content-Type", "application/json");*/
-            document.getElementById("processing").innerHTML = "processing....";
+            document.getElementById("processing").innerHTML = "Processing....";
             xhr.send();
             return false;
 
@@ -74,4 +126,19 @@ $(document).ready(function(){
 
 
     });
+
+
+
+
+    $("#compare").click(function(){
+        var xhr = new XMLHttpRequest();
+        //var url = "http://localhost/interaction/list.json";
+        var drxc = document.getElementsByClassName("drugs");
+        for(var j = 0; j < drxc.length; j++)
+        {
+            alert("the drugs are" + drxc[j].value)
+        }
+
+    });
+
 });

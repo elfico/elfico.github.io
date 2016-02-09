@@ -27,24 +27,29 @@
                     <h2>Drug Interaction Test</h2>
                <h4>How it Works</h4>
                <div>
+
                 <ol>
-                    <li>Select drugs from the pre-selected values or enter a drug name</li>
-                    <li>Click Compare to see the interaction of each drug with the other</li>
+                    <li>Enter the name of the drug or the RXCUI number of the drug</li>
+                    <li>Click CHECK to see the the interaction of the selected drug with other drugs</li>
                 </ol>
+
                 </div>
                 
                 
                     <form action="#" method="get">
                     <div class="from-group">
                     <div>
-                        <label for="drugs">Enter Drug RXCUI Number</label>
+                        <label for="drugs">Enter Drug Name or RXCUI Number</label>
                     <input type="text" id="drugs" class="form-control" required>
 
                         </div>
                         <div id="error" style="color: red"></div>
                         <br>
+                        <div><span>RXCUI: </span><span id="rxid"></span></div>
+                        <br>
                         <div>
-                            <input type="submit" class="btn btn-primary" name="send" value="CHECK" id="checker">
+                            <input type="submit" class="btn btn-primary" name="send" value="Check For Interactions" id="checker" disabled>
+                            <br>
                             <br>
                             <div id="processing"></div>
                         </div>
@@ -67,7 +72,7 @@
 
                         </table>
                     </div>
-                  <div id="message"></div>
+                  <!--div id="message"></div-->
                     
                 </div>
         </div>
