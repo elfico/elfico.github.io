@@ -215,7 +215,7 @@ $(document).ready(function(){
     $("#compare").click(function(){
        // var xhr = new XMLHttpRequest();
         //var url = "http://localhost/interaction/list.json";
-        var drugs=[0, 1, 2];
+        var drugs=[];
 
         var drxc = document.getElementsByClassName("drugs");
 
@@ -227,13 +227,17 @@ $(document).ready(function(){
 
         else
         {
-            $("#error2").html("");
+          $("#error2").html("");
+
         for(var j = 0; j < drxc.length; j++)
         {
             //alert("the drugs are" + drxc[j].value);
            drugs[j] = drxc[j].value;
            alert ("the drugs are " + drugs[j]);
         }
+
+        var xhr = new XMLHttpRequest();
+
        }
 
 
@@ -243,6 +247,8 @@ $(document).ready(function(){
 
     $("#clear").click(function(){
         $(".druglist").remove();
+        $("#rxid2").html("");
+        $("#error").html("");
         return false;
     });
 
