@@ -29,7 +29,7 @@ $(document).ready(function(){
 
                else
                {
-                   drug = "<li class='druglist'><input class='drugs' type='hidden' value='null'>" + drugname  + " No Rxcui</li>";
+                   drug = "<li class='druglist'><input class='drugs' type='hidden' value='empty'>" + drugname  + " No Rxcui</li>";
                    $("#rxid2").html("No RXCUI Found");
                   // document.getElementById("rxid2").innerHTML = "No RXCUI Found";
                    $("#dlist").before(drug);
@@ -216,6 +216,7 @@ $(document).ready(function(){
        // var xhr = new XMLHttpRequest();
         //var url = "http://localhost/interaction/list.json";
         var drugs=[];
+        var url2 = "https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=";
 
         var drxc = document.getElementsByClassName("drugs");
 
@@ -229,17 +230,21 @@ $(document).ready(function(){
         {
           $("#error2").html("");
 
-        for(var j = 0; j < drxc.length; j++)
-        {
-            //alert("the drugs are" + drxc[j].value);
-           drugs[j] = drxc[j].value;
-           //alert ("the drugs are " + drugs[j]);
-        }
+          for(var j = 0; j < drxc.length; j++)
+              {
+                  if(drxc[j].value !== "empty")
+                  {
+                      url2 = url2 + "+" + drxc[j].value;
+                      //drugs[j] = drxc[j].value;
+                  }
+              }
 
-        var xhr = new XMLHttpRequest();
-            var url = "https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=" + drugs[0] + "+" + drugs[1] + "+" + drugs[2];
+
+    //    if((drugs[0] === "empty") || (drugs[1] === "empty") ||(drugs[2] === "empty"))
+            var xhr = new XMLHttpRequest();
+           // var url = "https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=" + drugs[0] + "+" + drugs[1] + "+" + drugs[2];
             //alert(url);
-            xhr.open("GET", url, true);
+            xhr.open("GET", url2, true);
 
             xhr.onload = function(){
                 var data = JSON.parse(xhr.responseText);
@@ -248,14 +253,16 @@ $(document).ready(function(){
 
                 if(data.fullInteractionTypeGroup && data.fullInteractionTypeGroup.length > 0)
                 {
-                    for(var k = 0; k < data.fullInteractionTypeGroup[0].fullInteractionType.length; k++)
+                    for(var j = 0; j < data.fullInteractionTypeGroup[0].fullInteractionType.length; j++) {
 
-                    {
-                        var interaction = "<tr><td>" + data.fullInteractionTypeGroup[0].fullInteractionType[k].interactionPair[0].interactionConcept[0].minConceptItem.name + "</td>" +
-                            "<td>" + data.fullInteractionTypeGroup[0].fullInteractionType[k].interactionPair[0].interactionConcept[1].minConceptItem.name + "</td>" +
-                            "<td>" + data.fullInteractionTypeGroup[0].fullInteractionType[k].comment + "</td>" +
-                            "<td>" + data.fullInteractionTypeGroup[0].fullInteractionType[k].interactionPair[0].description + "</td></tr>";
+                        for (var k = 0; k < data.fullInteractionTypeGroup[0].fullInteractionType[j].interactionPair.length; k++)
+                        {
+                             var interaction = "<tr><td>" + data.fullInteractionTypeGroup[0].fullInteractionType[j].interactionPair[k].interactionConcept[0].minConceptItem.name + "</td>" +
+                                 "<td>" + data.fullInteractionTypeGroup[0].fullInteractionType[j].interactionPair[k].interactionConcept[1].minConceptItem.name + "</td>" +
+                                 "<td>" + data.fullInteractionTypeGroup[0].fullInteractionType[j].comment + "</td>" +
+                                 "<td>" + data.fullInteractionTypeGroup[0].fullInteractionType[j].interactionPair[k].description + "</td></tr>";
                         $("#nl2").before(interaction);
+                          }
                     }
                     $("#message").html("completed");
                }
