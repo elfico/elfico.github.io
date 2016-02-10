@@ -237,6 +237,16 @@ $(document).ready(function(){
         }
 
         var xhr = new XMLHttpRequest();
+            var url = "";
+            xhr.open("GET", url, true);
+
+            xhr.onload = function(){
+
+            };
+
+            xhr.onerror = function(){
+
+            };
 
        }
 
