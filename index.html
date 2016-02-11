@@ -32,6 +32,7 @@
                 <ol>
                     <li><h4>This module list all the interactions of a particular drug</h4></li>
                     <li><h4>Enter the name of the drug or the RXCUI number of the drug</h4></li>
+                    <li><h4>If you have entered the name, click FIND RXCUI to get the RXCUI of the drug</h4></li>
                     <li><h4>Click CHECK to see the the interaction of the selected drug with other drugs</h4></li>
                     <li><h4>As an example, use paracetamol</h4></li>
                 </ol>
@@ -51,6 +52,8 @@
                         <div><span class="text-info">RXCUI: </span><span id="rxid" class="text-info"></span></div>
                         <br>
                         <div>
+                            <input type="submit" class="btn btn-primary" name="send" value="Find RXCUI" id="find">
+
                             <input type="submit" class="btn btn-primary" name="send" value="Check For Interactions" id="checker">
                             <br>
                             <br>

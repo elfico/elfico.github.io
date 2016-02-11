@@ -3,10 +3,10 @@ $(document).ready(function(){
 //Page1 javascript starts
 
 //function to retrieve drug rxcui on keypress
-    $("#drugname").keyup(function(){
+    $("#find").click(function(){
 
         $("#processing").html("");//resets processing div
-             var rxc = $("#drugname").val();//gets the drugname
+             var rxc = $("#drugname").val().toLowerCase();//gets the drugname
           if(isNaN(rxc))//check if its not a number
             {
              var xhr = createXHR();
@@ -40,6 +40,7 @@ $(document).ready(function(){
         else if(!isNaN(rxc))//check if it is a number
         {
             $("#rxid").html(rxc);
+            return false;
           }
 
         else if(rxc === null)
@@ -126,8 +127,7 @@ $(document).ready(function(){
    $("#add").click(function(){
       
        $("#error2").html("");  //set error to blank
-       var drugname = $("#drugname2").val();//gets the drug name from the input
-       
+       var drugname = $("#drugname2").val().toLowerCase();//gets the drug name from the input
        var drug = "<li>All</li>";//dummy list tag. does nothing
        
        if(isNaN(drugname)) //check if drugname entered is not a number
