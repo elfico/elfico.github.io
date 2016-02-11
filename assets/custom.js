@@ -254,6 +254,12 @@ $(document).ready(function(){
                    $("#message").html("Not Completed. Some Drugs are Missing RXCUI. Make sure selected drugs have RXCUI");
                    $("#error2").html("");
                }
+
+                else
+                {
+                    $("#message").html("No Interactions Found");
+                    $("#error2").html("");
+                }
             };
 
             xhr.onerror = function(){
