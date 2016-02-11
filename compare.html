@@ -15,8 +15,8 @@
     <div>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="index.html">Check Interactions</a> </li>
-                <li><a href="compare.html">Drug and Interactions</a> </li>
+                <li><a href="index.html">Single Drug</a> </li>
+                <li><a href="compare.html">Drugs Interactions</a> </li>
             </ul>
 
     </div>
@@ -25,32 +25,35 @@
         </header>
         <div class="container">
             <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                    <h2>Drug Interaction Test</h2>
+              <div class="col-md-10 col-md-offset-1">
+                    <h2>Drugs Interactions</h2>
+                  <br>
                <h4>How it Works</h4>
                <div>
+
                 <ol>
-                    <li>This module show the interaction between TWO or THREE drugs</li>
-                    <li>Select drugs from the pre-selected values or enter a drug name</li>
-                    <li>Click Add to verify that the drug has a rxcui. <span class="text-danger">Drugs without RXCUI will not be computed</span></li>
-                    <li>Click Compare to see the interaction of each drug with the other</li>
+                    <li><h4>This module show the interaction between TWO or THREE drugs</h4></li>
+                    <li><h4>Select drugs from the pre-selected values or enter a drug name</h4></li>
+                    <li><h4>Click Add to verify that the drug has a rxcui. <span class="text-danger">Drugs without RXCUI will not be computed</span></h4></li>
+                    <li><h4>Click Compare to see the interaction of each drug with the other</h4></li>
+                    <li><h4>As an example, use the following drugs: simvastatin, bosentan, fluconazole</h4></li>
                 </ol>
                 </div>
-                
-                
+                <br><br>
                     <form action="#" method="get">
                     <div class="from-group">
                     <div>
-                        <label for="drugs">Enter Drugs</label>
+                        <label for="drugs"><h4 class="text-info">Enter Drug Name</h4></label>
                     <input list="drugs" class="form-control" id="drugname2">
                         <datalist id="drugs">
-                            <option value="p"></option>
-                            <option value="ps"></option>
+                            <option value="simvastatin"></option>
+                            <option value="fluconazole"></option>
+                            <option value="bosentan"></option>
                         </datalist>
                         </div>
                         <br>
-                        <div id="error2" style="color: red"></div>
-                        <div id="rxid2"></div>
+                        <div id="error2" class="text-danger"></div>
+                        <div id="rxid2" class="text-primary"></div>
                         <br>
                         <div>
                             <input type="submit" class="btn btn-primary" name="send" value="ADD" id="add">
@@ -70,31 +73,35 @@
                     </div>
                     </form>
                   <br>
-                  <div id="message">Here</div>
+                  <div id="message" class="text-primary"></div>
                     <br>
-                  <div>
-                       <h4>Result </h4>
-                  <table class="table">
-                            <tr>
-                                <th>Drug A</th>
-                                <th>Drug B</th>
-                                <th>Interaction</th>
-                                <th>Contra-Indication</th>
-
-                            </tr>
-                            <tr id="nl2">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-
-                        </table>
-                    </div>
 
                 </div>
         </div>
+
+            <div class="col-md-12">
+                <div>
+                    <h3 class="text-center">Result </h3>
+                    <table class="table table-responsive table-bordered">
+                        <tr>
+                            <th>Drug A</th>
+                            <th>Drug B</th>
+                            <th>Interaction</th>
+                            <th>Contra-Indication</th>
+
+                        </tr>
+                        <tr id="nl2">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                    </table>
+                </div>
+
             </div>
+  </div>
         
         
         <script type="text/javascript" src="assets/jQuery/jquery-2.1.4.min.js"></script>

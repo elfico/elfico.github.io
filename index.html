@@ -14,8 +14,8 @@
     </div>
     <div>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="index.html">Check Interactions</a> </li>
-            <li><a href="compare.html">Drug and Interactions</a> </li>
+            <li><a href="index.html">Single Drug</a> </li>
+            <li><a href="compare.html">Drugs Interactions</a> </li>
         </ul>
     </div>
   </div>
@@ -23,19 +23,21 @@
         </header>
         <div class="container">
             <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                    <h2>Drug Interactions</h2>
+              <div class="col-md-10 col-md-offset-1">
+                    <h2>Single Drug Interactions</h2>
+                  <br>
                <h4>How it Works</h4>
                <div>
 
                 <ol>
-                    <li>This module list all the interactions of a particular drug</li>
-                    <li>Enter the name of the drug or the RXCUI number of the drug</li>
-                    <li>Click CHECK to see the the interaction of the selected drug with other drugs</li>
+                    <li><h4>This module list all the interactions of a particular drug</h4></li>
+                    <li><h4>Enter the name of the drug or the RXCUI number of the drug</h4></li>
+                    <li><h4>Click CHECK to see the the interaction of the selected drug with other drugs</h4></li>
+                    <li><h4>As an example, use paracetamol</h4></li>
                 </ol>
 
                 </div>
-                
+                <br><br>
                 
                     <form action="#" method="get">
                     <div class="from-group">
@@ -44,22 +46,27 @@
                     <input type="text" id="drugname" class="form-control" required>
 
                         </div>
-                        <div id="error" style="color: red"></div>
+                        <div id="error" class="text-danger"></div>
 
-                        <div><span>RXCUI: </span><span id="rxid"></span></div>
+                        <div><span class="text-info">RXCUI: </span><span id="rxid" class="text-info"></span></div>
                         <br>
                         <div>
                             <input type="submit" class="btn btn-primary" name="send" value="Check For Interactions" id="checker">
                             <br>
                             <br>
-                            <div id="processing"></div>
+                            <div id="processing" class="text-primary"></div>
                         </div>
                     </div>
                     </form>
                     <br>
-                  <div>
+
+                    
+                </div>
+
+                <div class="col-md-12">
+                    <div>
                         <h4>Result For RXCUI <span id="drugrx"></span></h4>
-                        <table class="table">
+                        <table class="table table-responsive table-bordered">
                             <tr>
                                 <th>Drug Name</th>
                                 <th>Interactive Drug</th>
@@ -74,9 +81,8 @@
                         </table>
                     </div>
 
-                    
                 </div>
-        </div>
+            </div>
             </div>
         
         
