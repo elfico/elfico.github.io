@@ -38,8 +38,8 @@
       <file leaf-file-name="compare.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/compare.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="658" max-vertical-offset="1989">
-              <caret line="62" column="111" selection-start-line="62" selection-start-column="111" selection-end-line="62" selection-end-column="111" />
+            <state vertical-scroll-proportion="-19.615385" vertical-offset="697" max-vertical-offset="1989">
+              <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -48,8 +48,8 @@
       <file leaf-file-name="custom.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assets/custom.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.27058825" vertical-offset="910" max-vertical-offset="5219">
-              <caret line="63" column="26" selection-start-line="63" selection-start-column="26" selection-end-line="63" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.50756305" vertical-offset="4101" max-vertical-offset="5219">
+              <caret line="259" column="96" selection-start-line="259" selection-start-column="96" selection-end-line="259" selection-end-column="96" />
               <folding />
             </state>
           </provider>
@@ -479,14 +479,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/compare.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="658" max-vertical-offset="1989">
-          <caret line="62" column="111" selection-start-line="62" selection-start-column="111" selection-end-line="62" selection-end-column="111" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.538462" vertical-offset="330" max-vertical-offset="1734">
@@ -495,10 +487,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/compare.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.615385" vertical-offset="697" max-vertical-offset="1989">
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/assets/custom.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27058825" vertical-offset="910" max-vertical-offset="5219">
-          <caret line="63" column="26" selection-start-line="63" selection-start-column="26" selection-end-line="63" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.50756305" vertical-offset="4101" max-vertical-offset="5219">
+          <caret line="259" column="96" selection-start-line="259" selection-start-column="96" selection-end-line="259" selection-end-column="96" />
           <folding />
         </state>
       </provider>

@@ -257,7 +257,7 @@ $(document).ready(function(){
 
                 else
                 {
-                    $("#message").html("No Interactions Found");
+                    $("#message").html("No Interactions Found. The selected drugs are compatible");
                     $("#error2").html("");
                 }
             };
