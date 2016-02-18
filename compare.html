@@ -2,69 +2,72 @@
 <html>
     <head>
         <title>Drug Interaction Test</title>
-        <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
-             
+        <!--link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"-->
+        <link rel="stylesheet" type="text/css" href="assets/materialize/css/materialize.min.css">
+          <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css">
+
     </head>  
     <body>
-        <header>
-         <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Drug Interaction Test</a>
+    <div class="navbar-fixed">
+        <nav class="teal lighten-2">
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">Drug Interactions</a>
+                <a href="#" data-activates="mobile-form" class="button-collapse"><i class="fa fa-bars"></i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="index.html">Single Drug Test</a></li>
+                    <li class="active"><a href="#">Drugs Interaction</a></li>
+                </ul>
+                <ul class="side-nav" id="mobile-form">
+                    <li><a href="#">Single Drug Test</a></li>
+                    <li><a href="compare.html">Drugs Interaction</a></li>
+                </ul>
+            </div>
+        </nav>
     </div>
-    <div>
 
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="index.html">Single Drug</a> </li>
-                <li><a href="compare.html">Drugs Interactions</a> </li>
-            </ul>
-
-    </div>
-  </div>
-</nav>
-        </header>
         <div class="container">
             <div class="row">
-              <div class="col-md-10 col-md-offset-1">
-                    <h2>Drugs Interactions</h2>
+              <div class="col s12">
+                    <h4>Drugs Interactions</h4>
                   <br>
-               <h4>How it Works</h4>
+               <h5>How it Works</h5>
                <div>
 
                 <ol>
-                    <li><h4>This module show the interaction between TWO or THREE drugs</h4></li>
-                    <li><h4>Select drugs from the pre-selected values or enter a drug name</h4></li>
-                    <li><h4>Click Add to verify that the drug has a rxcui. <span class="text-danger">Drugs without RXCUI will not be computed</span></h4></li>
-                    <li><h4>Click Compare to see the interaction of each drug with the other</h4></li>
-                    <li><h4>As an example, use the following drugs: simvastatin, bosentan, fluconazole</h4></li>
+                    <li><h6>This module show the interaction between TWO or THREE drugs</h6></li>
+                    <li><h6>Select drugs from the pre-selected values or enter a drug name</h6></li>
+                    <li><h6>Click Add to verify that the drug has a rxcui. <span class="red-text">Drugs without RXCUI will not be computed</span></h6></li>
+                    <li><h6>Click Compare to see the interaction of each drug with the other</h6></li>
+                    <li><h6>As an example, use the following drugs: simvastatin, bosentan, fluconazole</h6></li>
                 </ol>
                 </div>
-                <br><br>
+                <br>
                     <form action="#" method="get">
-                    <div class="from-group">
-                    <div>
-                        <label for="drugs"><h4 class="text-info">Enter Drug Name</h4></label>
-                    <input list="drugs" class="form-control" id="drugname2">
+                    <div class="form-group">
+                    <div class="input-field">
+                        <label for="drugname2">Enter Drug Name</label>
+                    <input type="text" list="drugs" class="form-control" id="drugname2">
                         <datalist id="drugs">
                             <option value="simvastatin"></option>
                             <option value="fluconazole"></option>
                             <option value="bosentan"></option>
                         </datalist>
                         </div>
+
                         <br>
-                        <div id="error2" class="text-danger"></div>
-                        <div id="rxid2" class="text-primary"></div>
+                        <div id="error2" class="red-text"></div>
+                        <div id="rxid2" class="blue-text"></div>
                         <br>
                         <div>
-                            <input type="submit" class="btn btn-primary" name="send" value="ADD" id="add">
+                            <input type="submit" class="btn waves-effect waves-light" name="send" value="ADD" id="add">
 
-                            <input type="submit" class="btn btn-primary" name="compare" value="CHECK COMPATIBILITY" id="compare">
+                            <input type="submit" class="btn waves-effect waves-light" name="compare" value="CHECK COMPATIBILITY" id="compare">
 
-                            <input type="submit" class="btn btn-danger" name="clear"  value="CLEAR" id="clear">
+                            <input type="submit" class="btn waves-effect waves-light red accent-2" name="clear"  value="CLEAR" id="clear">
                         </div>
                         <br>
                         <div>
-                            <h4>Selected Drugs</h4>
+                            <h5>Selected Drugs</h5>
                             <ol type="1">
                             <span id="dlist"></span>
                             </ol>
@@ -73,7 +76,7 @@
                     </div>
                     </form>
                   <br>
-                  <div id="message" class="text-primary"></div>
+                  <div id="message" class="blue-text"></div>
                     <br>
 
                 </div>
@@ -81,13 +84,13 @@
 
             <div class="col-md-12">
                 <div>
-                    <h3 class="text-center">Result </h3>
-                    <table class="table table-responsive table-bordered">
-                        <tr>
-                            <th>Drug A</th>
-                            <th>Drug B</th>
-                            <th>Interaction</th>
-                            <th>Contra-Indication</th>
+                    <h5 class="text-center">Result </h5>
+                    <table class="bordered table-responsive highlight centered hoverable">
+                    <tr>
+                            <th class="center">Drug A</th>
+                            <th class="center">Drug B</th>
+                            <th class="center">Interaction</th>
+                            <th class="center">Contra-Indication</th>
 
                         </tr>
                         <tr id="nl2">
@@ -102,10 +105,11 @@
 
             </div>
   </div>
-        
-        
-        <script type="text/javascript" src="assets/jQuery/jquery-2.1.4.min.js"></script>
-<script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="assets/custom.js"></script>
+
+
+        <script type="text/javascript" src="assets/materialize/js/jquery-2.1.4.min.js"></script>
+        <!--script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script-->
+        <script type="text/javascript" src="assets/materialize/js/materialize.min.js"></script>
+        <script type="text/javascript" src="assets/custom.js"></script>
     </body>
 </html>

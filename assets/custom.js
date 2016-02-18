@@ -1,5 +1,13 @@
 $(document).ready(function(){
 
+$('.button-collapse').sideNav({
+            menuWidth: 200, // Default is 240
+            edge: 'left', // Choose the horizontal origin
+            closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+
+        }
+    );
+
 //Page1 javascript starts
 
 //function to retrieve drug rxcui on keypress
@@ -142,7 +150,7 @@ $(document).ready(function(){
                if(data.idGroup.rxnormId && data.idGroup.rxnormId.length >= 0) //check if the drug has a rxcui number
                {
                 var drugrxcui = data.idGroup.rxnormId[0];
-                   drug = "<li class='druglist'><h4><input class='drugs' type='hidden' value='" + drugrxcui + "'>" + drugname + " " + drugrxcui + "</h4></li>"; //creates a table data with drugname and rxcui
+                   drug = "<li class='druglist'><h6><input class='drugs' type='hidden' value='" + drugrxcui + "'>" + drugname + " " + drugrxcui + "</h6></li>"; //creates a table data with drugname and rxcui
                    $("#rxid2").html("RXCUI Found and Added");
                   
                    $("#dlist").before(drug); //add table data to table
@@ -246,7 +254,7 @@ $(document).ready(function(){
                         $("#nl2").before(interaction);
                           }
                     }
-                    $("#message").html("completed");
+                    $("#message").html("Completed");
                }
                
                else if(errormsg === "error") //if any of the drug doesnt have rxcui
