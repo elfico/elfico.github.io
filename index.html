@@ -1,121 +1,51 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Drug Interaction Test</title>
-        <!--link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"-->
-           <link rel="stylesheet" type="text/css" href="assets/materialize/css/materialize.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css">
-             
-    </head>  
-    <body>
-        <!--header>
-         <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Drug Interaction Test</a>
+<head>
+    <title>elfico.github.io</title>
+    <link type="text/css" rel="stylesheet" href="assets/semanticui/semantic.min.css" />
+    <script type="text/javascript" src="assets/semanticui/semantic.min.js"></script>
+</head>
+<body>
+  <div class="ui massive stackable menu">
+    
+      <div class="item">
+        <img src="/images/logo.png">
+      </div>
+      <a class="item">
+        <i class="home icon"></i>
+        Home
+      </a>
+      <a class="item">
+        <i class="github icon"></i>
+        Projects</a>
+     <!-- <div class="right menu">
+        <a class="item">
+        <div class="ui primary button">
+            <i class="sign in icon"></i>
+            Sign-in</div>
+        </a>
+      </div> -->
+ 
+</div>
+
+<div class="ui container">
+    <div class="ui cards">
+      <div class="card">
+          <div class="content">
+              <div class="header"><a href="interaction.html">Interactions</a></div>
+              <div class="meta">Drugs and Pharma</div>
+              <div class="description">checks drug interactions for a drug</div>
+          </div>
+      </div>
+
+      <div class="card">
+          <div class="content">
+              <div class="header"><a href="interaction.html">Compare Interactions</a></div>
+              <div class="meta">Drugs and Pharma</div>
+              <div class="description">checks drug interactions for two or three drugs</div>
+          </div>
+      </div>
     </div>
-    <div>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="index.html">Single Drug</a> </li>
-            <li><a href="compare.html">Drugs Interactions</a> </li>
-        </ul>
-    </div>
-  </div>
-</nav>
-        </header-->
-        
-      <div class="navbar-fixed">
-  <nav class="teal lighten-2">
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Drug Interactions</a>
-       <a href="#" data-activates="mobile-form" class="button-collapse"><i class="fa fa-bars"></i></a>
-      <ul class="right hide-on-med-and-down">
-        <li class="active"><a href="#">Single Drug Test</a></li>
-        <li><a href="compare.html">Drugs Interaction</a></li>
-      </ul>
-      <ul class="side-nav" id="mobile-form">
-        <li><a href="#">Single Drug Test</a></li>
-        <li><a href="compare.html">Drugs Interaction</a></li>
-      </ul>
-    </div>
-  </nav>
-        </div>
-        
-        
-        <div class="container">
-            <div class="row">
-              <!--div class="col-md-10 col-md-offset-1"-->
-                  <div class="col s12">
-
-                  <h4>Single Drug Interactions</h4>
-                  <br>
-               <h5>How it Works</h5>
-               <div>
-
-                <ol>
-                    <li><h6>This module list all the interactions of a particular drug</h6></li>
-                    <li><h6>Enter the name of the drug or the RXCUI number of the drug</h6></li>
-                    <li><h6>If you have entered the name, click FIND RXCUI to get the RXCUI of the drug</h6></li>
-                    <li><h6>Click CHECK to see the the interaction of the selected drug with other drugs</h6></li>
-                    <li><h6>As an example, use paracetamol</h6></li>
-                </ol>
-
-                </div>
-                <br>
-                
-                    <form action="#" method="get">
-                    <div class="form-group">
-                    <div class="input-field">
-                        <label for="drugname">Enter Drug Name or RXCUI Number</label>
-                    <input type="text" id="drugname" class="form-control validate" required>
-
-                        </div>
-                        <div id="error" class="text-danger"></div>
-
-                        <div><span class="text-info">RXCUI: </span><span id="rxid" class="text-info"></span></div>
-                        <br>
-                        <div>
-                            <input type="submit" class="btn waves-effect waves-light" name="send" value="Find RXCUI" id="find">
-
-                            <input type="submit" class="btn waves-effect waves-light" name="send" value="Check For Interactions" id="checker">
-                            <br>
-                            <br>
-                            <div id="processing" class="text-primary"></div>
-                        </div>
-                    </div>
-                    </form>
-                    <br>
-
-                    
-                </div>
-
-                <div class="col s12">
-                    <div>
-                        <h5>Result For RXCUI <span id="drugrx">..... </span></h5>
-                        <!--table class="table table-responsive table-bordered"-->
-                        <table class="bordered table-responsive highlight centered hoverable">
-                            <tr>
-                                <th class="center">Drug Name</th>
-                                <th class="center">Interactive Drug</th>
-                                <th class="center">Interaction</th>
-                            </tr>
-                            <tr id="nl">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-
-                        </table>
-                    </div>
-
-                </div>
-            </div>
-            </div>
-        
-        
-        <script type="text/javascript" src="assets/materialize/js/jquery-2.1.4.min.js"></script>
-<!--script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script-->
-<script type="text/javascript" src="assets/materialize/js/materialize.min.js"></script>
-<script type="text/javascript" src="assets/custom.js"></script>
-    </body>
+</div>
+</body>
 </html>
